@@ -265,3 +265,142 @@ return step
 
 
 console.log(solution(1,5))
+
+//https://www.codewars.com/kata/58845748bd5733f1b300001f
+
+function rangeBitCount(a, b,resultArray=[]) {
+  if(b!==1){
+    
+    for(let i=a;i<=b;i++){
+      resultArray.push(binaryConvertion(i))
+      } 
+      return countOnes(resultArray)
+
+  }else{
+    return  1
+  }  
+
+}
+
+
+const binaryConvertion=(num,binaryDigit=[])=>
+    {
+      if(num!==0){
+        while(num!=1){
+
+          num%2===0 ? binaryDigit.unshift(0) : binaryDigit.unshift(1)
+          num=Math.floor(num/2)
+          
+      }
+         binaryDigit.unshift(1)
+         return binaryDigit.join('')
+      }
+     else{
+      binaryDigit.unshift(0)
+      return binaryDigit.join('')
+     }
+        
+    }
+
+
+const countOnes=(resultArray)=>{
+let count=0;
+resultArray.forEach((item)=>{
+  for(let i=0;i<item.length;i++){
+    if(item[i]==1){
+      count++
+    }
+  }
+})
+return count
+
+}
+// https://www.codewars.com/kata/58640340b3a675d9a70000b9
+var removeVowels = function(str){
+
+  strArr=str.split('')
+  
+  newArr=strArr.filter((item)=>{
+  return item!='a' &&  item!='e' &&  item!='i' &&  item!='o'&&  item!='u'  
+  })
+  return newArr.join('')
+  
+  }
+  // https://www.codewars.com/kata/55968ab32cf633c3f8000008
+  function initials(n){
+    val=n;
+    valArr=val.split(" ")
+    initialsArr=valArr.map((item,i)=>{
+      if(i<valArr.length-1){
+        
+        return item.slice(0,1).toUpperCase()
+      }
+      else{
+        return item.slice(0,1).toUpperCase()+item.slice(1)
+      }
+    })
+    
+    return initialsArr.join('.')
+    }
+    
+
+// https://www.codewars.com/kata/54ff3102c1bad923760001f3
+    function getCount(str,count=0) {
+  
+      str.split('').forEach((item)=>{
+        if(item=='a' || item=='e' || item=='i' || item=='o' || item=='u' ){
+          count++
+      }
+      })
+      return count
+    }
+    
+
+// https://www.codewars.com/kata/52b757663a95b11b3d00062d
+    function toWeirdCase(string,newArr=[],new2arr=[],strArr=[],newStr=[]){
+ 
+      if (string.includes(" ")){
+         strArr=string.split(' ')
+      // console.log(strArr)
+      strArr.map((item)=>{
+      
+      newArr.push(item.split('').map((alpha,i)=>  i%2===0 ?  alpha.toUpperCase() :  alpha.toLowerCase()))  
+      
+        
+      })
+      
+      newArr.map((each)=>{
+         new2arr.push(each.join(''))
+      })
+    
+      return new2arr.join(' ')
+      }
+      else{
+      strArr=string.split('')
+      newStr=strArr.map((alpha,i)=>   i%2===0 ?  alpha.toUpperCase() :  alpha.toLowerCase() )
+      
+      return newStr.join('')
+      }
+    }
+
+
+// https://www.codewars.com/kata/5839edaa6754d6fec10000a2
+
+function findMissingLetter(arr)
+{
+  arr=arr.join('')
+  first=arr.charCodeAt(0)
+  for(let i=0;i<arr.length;i++){
+    
+  if(first===arr.charCodeAt(i)){
+     first++
+    
+  }else{
+    
+        break;
+  }
+  
+}
+  
+  return String.fromCharCode(first);
+}
